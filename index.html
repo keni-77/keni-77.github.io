@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Game Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        h1 { text-align: center; color: #4ecca3; }
+        
+        /* ゲームカードのグリッドレイアウト */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .game-card {
+            background: #16213e;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #0f3460;
+            display: flex;
+            flex-direction: column;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(78, 204, 165, 0.3);
+        }
+        .game-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        .game-info {
+            padding: 16px;
+        }
+        .game-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4ecca3;
+            margin-bottom: 8px;
+        }
+        .game-desc {
+            font-size: 14px;
+            color: #b2bec3;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎮 Game Portfolio</h1>
+    
+    <div id="gameGrid" class="game-grid">
+        <!-- ここにJavaScriptで自動挿入されます -->
+    </div>
+
+<script>
+    // games.json を読み込んで自動生成
+    fetch('games.json')
+        .then(response => response.json())
+        .then(games => {
+            const container = document.getElementById('gameGrid');
+            games.forEach(game => {
+                const card = document.createElement('a');
+                card.className = 'game-card';
+                card.href = game.url;
+                card.target = '_blank'; // 新しいタブで開く
+
+                card.innerHTML = `
+                    <img src="${game.image}" alt="${game.title}">
+                    <div class="game-info">
+                        <div class="game-title">${game.title}</div>
+                        <div class="game-desc">${game.description}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        })
+        .catch(err => console.error("データの読み込みに失敗しました:", err));
+</script>
+</body>
+</html>
