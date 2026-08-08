@@ -1,0 +1,18 @@
+[
+  {
+    "name": "INM Bot",
+    "description": "サーバーのログ管理や面白い定型文応答を自動で行う賑やかしBotです。",
+    "icon": "https://keni-77.github.io/inmbotweb/icon.png",
+    "tags": ["Node.js", "Discord.js", "ユーティリティ"],
+    "inviteUrl": "https://discord.com/",
+    "githubUrl": "https://github.com/keni-77"
+  },
+  {
+    "name": "便利コマンドBot",
+    "description": "Diceロールやタイマー設定など、日常でちょっと役立つ機能を集めた多機能Botです。",
+    "icon": "",
+    "tags": ["Python", "便利ツール"],
+    "inviteUrl": "",
+    "githubUrl": "https://github.com/keni-77"
+  }
+]
