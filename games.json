@@ -3,7 +3,8 @@
     "title": "エアホッケー",
     "description": "卓球ルールを採用したP2P対戦エアホッケーゲーム",
     "url": "https://keni-77.github.io/airhockey/",
-    "image": "https://keni-77.github.io/inmbotweb/icon.png"
+    "image": "https://keni-77.github.io/inmbotweb/icon.png",
+    "tag": ["HTML / CSS", "WebRTC (PeerJS)", "JavaScript"]
   },
   {
     "title": "HEXSNAKE",
