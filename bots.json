@@ -1,17 +1,8 @@
 [
   {
-    "name": "淫夢語録指摘Bot",
-    "description": "淫夢語録を検出して指摘する Discord Bot。サーバーの治安維持に役立つ、ユニークで便利な機能を搭載。",
+    "title": "淫夢語録指摘Bot",
+    "description": "淫夢語録を検出して指摘するDiscord Bot。サーバーの治安維持に役立つ、ユニークで便利な機能を搭載。",
     "icon": "https://keni-77.github.io/inmbotweb/icon.png",
-    "webpageUrl": "https://keni-77.github.io/inmbotweb/",
-    "githubUrl": "https://github.com/keni-77/immuBot/"
-  },
-  {
-    "name": "便利コマンドBot",
-    "description": "Diceロールやタイマー設定など、日常でちょっと役立つ機能を集めた多機能Botです。",
-    "icon": "",
-    "tags": ["Python", "便利ツール"],
-    "inviteUrl": "",
-    "githubUrl": "https://github.com/keni-77"
+    "url": "https://keni-77.github.io/inmbotweb/"
   }
 ]
