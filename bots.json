@@ -1,11 +1,10 @@
 [
   {
-    "name": "INM Bot",
-    "description": "サーバーのログ管理や面白い定型文応答を自動で行う賑やかしBotです。",
+    "name": "淫夢語録指摘Bot",
+    "description": "淫夢語録を検出して指摘する Discord Bot。サーバーの治安維持に役立つ、ユニークで便利な機能を搭載。",
     "icon": "https://keni-77.github.io/inmbotweb/icon.png",
-    "tags": ["Node.js", "Discord.js", "ユーティリティ"],
-    "inviteUrl": "https://discord.com/",
-    "githubUrl": "https://github.com/keni-77"
+    "webpageUrl": "https://keni-77.github.io/inmbotweb/",
+    "githubUrl": "https://github.com/keni-77/immuBot/"
   },
   {
     "name": "便利コマンドBot",
