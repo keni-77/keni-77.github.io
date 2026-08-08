@@ -270,6 +270,7 @@
                         <div class="bot-desc">${bot.description}</div>
                         <div class="bot-tags">${tagsHtml}</div>
                         <div class="bot-btn-group">
+                            ${bot.webpageUrl ? `<a href="${bot.webpageUrl}" target="_blank" rel="noopener noreferrer" class="bot-btn btn-invite">紹介ページ</a>` : ''}
                             ${bot.inviteUrl ? `<a href="${bot.inviteUrl}" target="_blank" rel="noopener noreferrer" class="bot-btn btn-invite">サーバーに追加</a>` : ''}
                             ${bot.githubUrl ? `<a href="${bot.githubUrl}" target="_blank" rel="noopener noreferrer" class="bot-btn btn-detail">GitHub</a>` : ''}
                         </div>
