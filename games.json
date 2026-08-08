@@ -1,15 +1,14 @@
 [
   {
     "title": "エアホッケー",
-    "description": "卓球ルールを採用したP2P対戦エアホッケーゲーム",
+    "description": "卓球ルールを採用した1対1のエアホッケーゲーム",
     "url": "https://keni-77.github.io/airhockey/",
-    "image": "https://keni-77.github.io/inmbotweb/icon.png",
-    "tag": ["HTML / CSS", "WebRTC (PeerJS)", "JavaScript"]
+    "image": "https://keni-77.github.io/inmbotweb/icon.png"
   },
   {
     "title": "HEXSNAKE",
     "description": "六角形盤面上を動き回るヘビのゲーム",
     "url": "https://keni-77.github.io/hexsnake/",
-    "image": "https://via.placeholder.com/300x180?text=BlockBreaker"
+    "image": "https://keni-77.github.io/hexsnake/usage.png"
   }
 ]
