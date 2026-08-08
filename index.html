@@ -79,12 +79,12 @@
         .tab-container {
             display: flex; gap: 8px; margin-bottom: 24px;
             border-bottom: 2px solid var(--border-color);
-            overflow-x: auto; /* スマホで横スクロール可能に */
+            overflow-x: auto;
             padding-bottom: -2px;
         }
         .tab-button {
             background: transparent; border: none;
-            border-bottom: 3px solid transparent; /* アクティブ時の下線用 */
+            border-bottom: 3px solid transparent;
             padding: 12px 20px;
             font-size: 1.1rem; font-weight: 700; color: var(--text-sub);
             cursor: pointer; font-family: inherit; white-space: nowrap;
@@ -92,7 +92,6 @@
         }
         .tab-button:hover { color: var(--text-main); background: rgba(0,0,0,0.03); border-radius: 8px 8px 0 0; }
         
-        /* アクティブなタブのスタイル */
         .tab-button.active { color: var(--text-main); background: var(--card-bg); border-radius: 8px 8px 0 0; }
         .tab-button.games.active { border-bottom-color: var(--accent-warm); color: var(--accent-warm); }
         .tab-button.bots.active { border-bottom-color: var(--accent-purple); color: var(--accent-purple); }
@@ -108,9 +107,35 @@
         .item-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; animation: fadeIn 0.4s ease forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .item-card { background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 24px; padding: 24px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .item-card { 
+            background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 24px; 
+            padding: 24px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; 
+            text-decoration: none; color: inherit; transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
         .item-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        
+        /* カバー画像（image） */
+        .item-cover-image {
+            width: calc(100% + 48px); height: 150px;
+            margin: -24px -24px 16px -24px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--border-color);
+            background-color: #f7ede2;
+        }
+
+        /* 絵文字アイコン */
         .item-icon { font-size: 2rem; margin-bottom: 12px; }
+        
+        /* 画像URLのアイコン */
+        .item-icon-img {
+            width: 52px; height: 52px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border: 2px solid var(--border-color);
+        }
+
         .item-title { font-size: 1.2rem; font-weight: 900; margin-bottom: 8px; }
         .item-desc { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 16px; flex-grow: 1; }
         .item-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
@@ -122,7 +147,7 @@
         @media (max-width: 768px) {
             .hero { flex-direction: column-reverse; text-align: center; padding-top: 110px; }
             .profile-grid { grid-template-columns: 1fr; }
-            .tab-container { padding-bottom: 2px; } /* スマホのスクロールバー微調整 */
+            .tab-container { padding-bottom: 2px; }
         }
     </style>
 </head>
@@ -212,32 +237,38 @@
     </footer>
 
     <script>
-        // カテゴリごとの情報（タイトル・説明・テーマカラー）
+        // カテゴリごとの情報（タイトル・説明・テーマカラー・デフォルトのボタン文字列）
         const categoryMeta = {
             games: {
                 title: "ブラウザゲーム一覧",
                 desc: "対戦エアホッケーなど、インストール不要でブラウザやスマホからすぐ遊べる自作ゲームたちです。",
-                color: "var(--accent-warm)"
+                color: "var(--accent-warm)",
+                defaultBtn: "遊ぶ ➔"
             },
             bots: {
                 title: "Bot一覧",
                 desc: "サーバーの会話を賑やかにしたり、便利機能を届ける自作のDiscord Botをまとめています。",
-                color: "var(--accent-purple)"
+                color: "var(--accent-purple)",
+                defaultBtn: "導入する ➔"
             },
             tools: {
                 title: "ツール一覧",
                 desc: "日常や開発のちょっとした不便を解決する便利スクリプトやWebツール置き場です。",
-                color: "var(--accent-yellow)"
+                color: "var(--accent-yellow)",
+                defaultBtn: "使ってみる ➔"
             }
         };
 
-        // 非同期処理でJSONを取得する関数 (isInitialLoadで初期読み込みかどうかを判定)
+        // 文字列がURL形式かどうかを判定する関数
+        function isUrl(str) {
+            if (!str || typeof str !== 'string') return false;
+            return str.startsWith('http://') || str.startsWith('https://') || str.startsWith('./') || str.startsWith('/') || str.startsWith('data:');
+        }
+
         async function showCategory(categoryId, element, isInitialLoad = false) {
-            // 1. タブのデザイン切り替え
             document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
             if(element) element.classList.add('active');
 
-            // 2. 表示エリアのヘッダー更新
             const meta = categoryMeta[categoryId];
             const titleEl = document.getElementById('display-title');
             const descEl = document.getElementById('display-desc');
@@ -247,32 +278,55 @@
             titleEl.style.color = meta.color;
             descEl.textContent = meta.desc;
             
-            // 一旦グリッドを空にしてローディング表示
             grid.innerHTML = "<p style='grid-column: 1/-1;'>読み込み中...</p>"; 
 
-            // アニメーションを再再生するための小技
             grid.style.animation = 'none';
-            grid.offsetHeight; /* リフロー強制 */
+            grid.offsetHeight;
             grid.style.animation = null;
 
-            // 3. JSONデータの取得とカードの生成
             try {
                 const response = await fetch(categoryId + '.json');
                 if (!response.ok) throw new Error('ネットワークエラー');
                 const items = await response.json();
 
-                grid.innerHTML = ""; // ローディングテキストをクリア
+                grid.innerHTML = "";
 
                 if(items.length === 0) {
                     grid.innerHTML = "<p style='grid-column: 1/-1;'>まだ作品がありません。</p>";
                 } else {
                     items.forEach(item => {
                         const title = item.title || "無題";
-                        const desc = item.desc || item.description || "";
-                        const icon = item.icon || "✨";
-                        const btnText = item.btnText || "見る ➔";
-                        const tagsHtml = item.tags ? item.tags.map(t => `<span class="item-tag">${t}</span>`).join('') : '';
+                        const desc = item.description || item.desc || "";
                         
+                        // カテゴリごとにボタン文言を変更（JSON側で btnText の指定があればそれを優先）
+                        const btnText = item.btnText || meta.defaultBtn;
+                        
+                        // tag と tags の両方に対応
+                        const tagsArray = item.tags || item.tag || [];
+                        const tagsHtml = tagsArray.map(t => `<span class="item-tag">${t}</span>`).join('');
+                        
+                        // 画像・アイコンの制御
+                        let mediaHtml = "";
+
+                        // 1. カバー画像（image）がURL指定されている場合
+                        if (isUrl(item.image)) {
+                            mediaHtml += `<img src="${item.image}" alt="${title}" class="item-cover-image">`;
+                        }
+
+                        // 2. アイコン（icon）の処理
+                        if (item.icon) {
+                            if (isUrl(item.icon)) {
+                                // iconが画像URLの場合
+                                mediaHtml += `<img src="${item.icon}" alt="${title}" class="item-icon-img">`;
+                            } else {
+                                // iconが絵文字などのテキストの場合
+                                mediaHtml += `<div class="item-icon">${item.icon}</div>`;
+                            }
+                        } else if (!isUrl(item.image)) {
+                            // imageもiconも無い場合のデフォルト絵文字
+                            mediaHtml += `<div class="item-icon">✨</div>`;
+                        }
+
                         const card = document.createElement('a');
                         card.className = 'item-card';
                         card.href = item.url || "#";
@@ -280,12 +334,11 @@
                         card.rel = 'noopener noreferrer';
                         card.style.borderColor = "var(--border-color)";
                         
-                        // ホバー時の枠線色をカテゴリカラーに合わせる
                         card.addEventListener('mouseenter', () => card.style.borderColor = meta.color);
                         card.addEventListener('mouseleave', () => card.style.borderColor = "var(--border-color)");
 
                         card.innerHTML = `
-                            <div class="item-icon">${icon}</div>
+                            ${mediaHtml}
                             <div class="item-title">${title}</div>
                             <div class="item-desc">${desc}</div>
                             <div class="item-tags">${tagsHtml}</div>
@@ -300,7 +353,6 @@
             }
         }
 
-        // ▼ ここがポイント！ ページが読み込まれたら自動で「games」のタブを開く
         window.addEventListener('DOMContentLoaded', () => {
             const defaultTab = document.querySelector('.tab-button.games');
             showCategory('games', defaultTab, true);
