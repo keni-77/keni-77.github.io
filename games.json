@@ -10,5 +10,11 @@
     "description": "六角形盤面上を動き回るヘビのゲーム",
     "url": "https://keni-77.github.io/hexsnake/",
     "image": "https://keni-77.github.io/hexsnake/usage.png"
+  },
+  {
+    "title": "物理Bros.",
+    "description": "シンプルな2人プレイの乱闘ゲーム",
+    "url": "https://keni-77.github.io/brawl/",
+    "image": "https://keni-77.github.io/brawl/icon.png"
   }
 ]
