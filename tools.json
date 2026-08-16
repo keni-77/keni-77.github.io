@@ -13,7 +13,7 @@
   },
   {
     "title": "素数ツール",
-    "description": "素因数分解、n番目の素数、n以下の素数の個数を高速で計算できるツール",
+    "description": "素因数分解、n番目の素数、n以下の素数の個数とその和…などを高速で計算できるツール",
     "url": "https://keni-77.github.io/prime-tools/",
     "image": "https://keni-77.github.io/prime-tools/icon.png"
   }
