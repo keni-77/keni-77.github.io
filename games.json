@@ -16,5 +16,11 @@
     "description": "シンプルな2人プレイの乱闘ゲーム",
     "url": "https://keni-77.github.io/brawl/",
     "image": "https://keni-77.github.io/brawl/icon.png"
+  },
+  {
+    "title": "素数シューティング",
+    "description": "素数ツールのおまけゲーム",
+    "url": "https://keni-77.github.io/prime-tools/prime-game.html",
+    "image": "https://keni-77.github.io/prime-tools/icon.png"
   }
 ]
