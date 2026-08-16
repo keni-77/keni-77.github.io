@@ -1,3 +1,8 @@
 [
-  
+  {
+    "title": "ブラウザアラーム",
+    "description": "アラーム機能のないデバイスのためのツール",
+    "url": "https://keni-77.github.io/alarm/",
+    "image": "https://keni-77.github.io/alarm/icon.png"
+  }
 ]
