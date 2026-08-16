@@ -18,6 +18,12 @@
     "image": "https://keni-77.github.io/brawl/icon.png"
   },
   {
+    "title": "古文フリッカー",
+    "description": "古文における用言の行や活用を素早く答えるゲーム",
+    "url": "https://keni-77.github.io/kobun/",
+    "image": "https://keni-77.github.io/kobun/icon.png"
+  },
+  {
     "title": "素数シューティング",
     "description": "素数ツールのおまけゲーム",
     "url": "https://keni-77.github.io/prime-tools/prime-game.html",
