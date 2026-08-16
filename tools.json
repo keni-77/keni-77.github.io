@@ -4,5 +4,11 @@
     "description": "アラーム機能のないデバイスのためのツール",
     "url": "https://keni-77.github.io/alarm/",
     "image": "https://keni-77.github.io/alarm/icon.png"
+  },
+  {
+    "title": "OTFビューアー",
+    "description": "otf形式のフォントを試すツール",
+    "url": "https://keni-77.github.io/otf-viewer/",
+    "image": "https://keni-77.github.io/otf-viewer/icon.png"
   }
 ]
