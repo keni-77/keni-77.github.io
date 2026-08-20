@@ -9,7 +9,7 @@
     "title": "HEXSNAKE",
     "description": "六角形盤面上を動き回るヘビのゲーム",
     "url": "https://keni-77.github.io/hexsnake/",
-    "image": "https://keni-77.github.io/hexsnake/usage.png"
+    "image": "https://keni-77.github.io/hexsnake/icon.png"
   },
   {
     "title": "物理Bros.",
@@ -25,8 +25,9 @@
   },
   {
     "title": "素数リズムタップ",
-    "description": "素数ツールのおまけゲーム 高難易度",
+    "description": "素数ツールのおまけゲーム",
     "url": "https://keni-77.github.io/prime-tools/prime-game.html",
-    "image": "https://keni-77.github.io/prime-tools/image.png"
+    "image": "https://keni-77.github.io/prime-tools/image.png",
+    "tag": ["高難易度"]
   }
 ]
