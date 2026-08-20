@@ -156,7 +156,40 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">INEK</a>
+            <a href="#" class="logo">
+                <div style="position: absolute; top: 5px; left: 100px; z-index: 100;">
+                    <svg id="inek-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 50" width="120" height="50">
+                        <defs>
+                            <style>
+                                @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+                                .draw-text {
+                                    font-family: 'Dancing Script', cursive;
+                                    font-size: 42px;
+                                    font-weight: bold;
+                                    fill: transparent;
+                                    stroke: #ff5e98; 
+                                    stroke-width: 1.5;
+                                    stroke-dasharray: 300;
+                                    stroke-dashoffset: 300;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    animation: 
+                                    draw 1.5s ease-in-out forwards, fillIn 0.8s ease-in-out 1.5s forwards;
+                                }
+                                @keyframes draw {
+                                    0% { stroke-dashoffset: 300; }
+                                    100% { stroke-dashoffset: 0; }
+                                }
+                                @keyframes fillIn {
+                                    0% { fill: transparent; stroke-width: 1.5; }
+                                    100% { fill: #ff5e98; stroke-width: 0; }
+                                }
+                            </style>
+                        </defs>
+                        <text x="5" y="40" class="draw-text">Inek</text>
+                    </svg>
+                </div>
+            </a>
             <ul class="nav-links">
                 <li><a href="#about">私について</a></li>
                 <li><a href="#works">作品</a></li>
@@ -229,6 +262,7 @@
 
         </section>
     </main>
+    
 
     <footer>
         <p>© 2026 KENI - Thanks for visiting!</p>
